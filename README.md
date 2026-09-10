@@ -1,19 +1,17 @@
 # Net Worth Tracker
 
-Sekiz Vault'un tek kullanıcılı, kişisel **Net Worth Tracker**'a dönüştürülmüş hâli.
-Çok kullanıcılı sistem, admin paneli ve kâr dağıtımı kaldırıldı; auth tamamen yok —
-uygulama yalnızca LAN içinde erişilebilir olacak şekilde tasarlandı.
+Tek kullanıcılı, kişisel **Net Worth Tracker**. Auth yok — uygulama yalnızca
+LAN içinde erişilebilir olacak şekilde tasarlandı.
 
-## Neler değişti (Sekiz Vault'a göre)
+## Özellikler
 
-- **Tek kullanıcı, auth yok.** `USERS`, login ekranı, session yönetimi ve
-  kullanıcı-başına dosyalar kaldırıldı. Tüm veri tek dosyada:
+- **Tek kullanıcı, auth yok.** Login ekranı, session yönetimi ve
+  kullanıcı-başına dosyalar yok. Tüm veri tek dosyada:
   `www/data/state.json`.
 - **`admin.php` tamamen silindi.** Admin paneli ve toplu kâr dağıtımı
   (`PROFIT_CAP_USD`, `bulk_profit`, `apply_profit` vb.) kaldırıldı.
-- **Varlık kilidi kalktı.** Eskiden sabit olan 8 varlık (Albi, Vipci, Cex, USDT,
-  Vipex, Fex, Vivi, XAUT) artık normal, silinebilir/adı değiştirilebilir
-  varlıklar. Yeni kurulumda varlık listesi boş başlar — istediğini ekle.
+- **Varlık yönetimi.** Varlıklar silinebilir/adı değiştirilebilir.
+  Yeni kurulumda varlık listesi boş başlar — istediğini ekle.
 - **Borç/negatif varlık desteği.** Bir varlığın taban tutarını negatif girersen
   (ör. "Kredi Kartı Borcu": −500) otomatik olarak borç sayılır, kırmızı
   gösterilir ve **Net Worth = Varlıklar − Borçlar** olarak hesaplanır. Ayrı bir
@@ -31,18 +29,14 @@ uygulama yalnızca LAN içinde erişilebilir olacak şekilde tasarlandı.
 - **Basitleştirilmiş API** — aşağıya bakın. `?api=cron` artık key istemiyor
   (LAN içinde güvenli kabul edildi) ve tüm kullanıcılar yerine tek state'i
   günceller.
-- **Geriye dönük uyumlu içe aktarma.** Eski Sekiz Vault `vault*.json`
-  dosyalarından biri `www/data/` içinde bulunursa ilk açılışta otomatik
-  içe aktarılır (eski `fixed` alanı yoksayılır, kâr log kayıtları normal
-  gelir kaydı olarak kalır). `?api=import` ile manuel JSON içe aktarma da
-  aynen çalışır.
+- **Geriye dönük uyumlu içe aktarma.** `?api=import` ile manuel JSON içe
+  aktarma çalışır.
 
 > **Not — `data.json` hakkında:** Yüklenen `data.json` dosyası (Keith/Ege/Utku/Rosea
 > anahtarlı, `darkexAmount`/`otherAmount` alanlı) tamamen farklı bir şemaya
-> sahip — bu bir işlem/pozisyon takip verisi, Sekiz Vault state formatında
-> değil. Net Worth Tracker'ın içe aktarma doğrulaması (`assets` alanı zorunlu)
-> bu dosyayı haklı olarak reddeder. Bu veriyi taşımak istersen ayrı bir görev
-> olarak ele almak gerekir; bu dönüşüme dahil etmedim.
+> sahip — bu bir işlem/pozisyon takip verisi. Net Worth Tracker'ın içe aktarma
+> doğrulaması (`assets` alanı zorunlu) bu dosyayı haklı olarak reddeder. Bu
+> veriyi taşımak istersen ayrı bir görev olarak ele almak gerekir.
 
 ## Dosya yapısı
 
