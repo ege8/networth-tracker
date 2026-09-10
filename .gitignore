@@ -1,0 +1,4 @@
+# Gerçek finansal veri — asla public repo'ya gitmez
+www/data/state.json
+www/data/*.json
+www/data/.htaccess

@@ -1,0 +1,11 @@
+services:
+  networth:
+    build: .
+    container_name: networth
+    ports:
+      # Auth yok — yalnızca LAN'a bağla. Router'da bu portu NAT/port-forward
+      # ile internete AÇMAYIN.
+      - "0.0.0.0:8095:80"
+    volumes:
+      - ./www:/var/www/html
+    restart: unless-stopped
