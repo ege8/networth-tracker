@@ -8,8 +8,6 @@ LAN içinde erişilebilir olacak şekilde tasarlandı.
 - **Tek kullanıcı, auth yok.** Login ekranı, session yönetimi ve
   kullanıcı-başına dosyalar yok. Tüm veri tek dosyada:
   `www/data/state.json`.
-- **`admin.php` tamamen silindi.** Admin paneli ve toplu kâr dağıtımı
-  (`PROFIT_CAP_USD`, `bulk_profit`, `apply_profit` vb.) kaldırıldı.
 - **Varlık yönetimi.** Varlıklar silinebilir/adı değiştirilebilir.
   Yeni kurulumda varlık listesi boş başlar — istediğini ekle.
 - **Borç/negatif varlık desteği.** Bir varlığın taban tutarını negatif girersen
